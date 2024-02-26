@@ -31,4 +31,4 @@ For example: `celestiv/http-server`
 Example: `docker container commit rtehtrhh45 celestiv/http-server`
 6. `docker push <image ID>`
 Example: `docker push celestiv/http-server`
-7. 
+

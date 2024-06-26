@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeserve
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubeserve
+  minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      containers:
+      - image: quay.io/evgeniy_ovchintsev/kubeserve:v1
+        name: main
+        readinessProbe:
+          periodSeconds: 1
+          httpGet:
+            path: /
+            port: 80

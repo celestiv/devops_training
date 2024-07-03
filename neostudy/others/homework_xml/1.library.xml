@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book>
+        <title>War and Peace</title>
+        <author>Leo Tolstoy</author>
+        <publication_year>1869</publication_year>
+    </book>
+    <book>
+        <title>The Master and Margarita</title>
+        <author>Mikhail Bulgakov</author>
+        <publication_year>1967</publication_year>
+    </book>
+    <book>
+        <title>Crime and Punishment</title>
+        <author>Fyodor Dostoevsky</author>
+        <publication_year>1866</publication_year>
+    </book>
+</library>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<store>
+    <product>
+        <name>Laptop</name>
+        <brand>Apple</brand>
+        <price>120000</price>
+    </product>
+    <product>
+        <name>Smartphone</name>
+        <brand>Samsung</brand>
+        <price>70000</price>
+    </product>
+    <product>
+        <name>Television</name>
+        <brand>LG</brand>
+        <price>80000</price>
+    </product>
+</store>

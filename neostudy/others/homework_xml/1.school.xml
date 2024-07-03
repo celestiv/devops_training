@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<school>
+    <class>
+        <number>1A</number>
+        <teacher>Maria Ivanova</teacher>
+        <number_of_students>25</number_of_students>
+    </class>
+    <class>
+        <number>2B</number>
+        <teacher>Aleksey Petrov</teacher>
+        <number_of_students>28</number_of_students>
+    </class>
+    <class>
+        <number>3C</number>
+        <teacher>Dmitry Sidorov</teacher>
+        <number_of_students>30</number_of_students>
+    </class>
+</school>

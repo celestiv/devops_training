@@ -107,3 +107,17 @@
 ![syscalls](./img/linux_internals/syscalls.png)
 
 ![virt](./img/linux_internals/virt.png)
+
+## Изоляция
+
+Классное объяснение как работает docker внутри: [ссылка](https://youtu.be/kJG2V48L-IE?t=9285)
+
+`sudo unshare -fp --mount-proc /bin/bash` - запуск процесса bash в изоляции внутри своего namespace
+
+Открывается новая консоль, в которой `ps auwwxf` показывает PID процесса bash = 1
+
+![cgroups](./img/linux_internals/cgroups.png)
+
+![namespaces](./img/linux_internals/namespaces.png)
+
+

@@ -1,0 +1,53 @@
+stages:
+  - build
+  - test
+  - dev
+  - release
+
+image: docker:latest
+
+variables:
+  IMAGE: alpine: edge
+
+builds:
+  stage: build
+  image: $IMAGE
+  variables:
+    IMAGE: 
+  before_script:
+    - apk add curl --no-cache
+  script:
+    - curl google.com -vvvvv
+  after_script:
+    - echo "after echo"
+  artifacts:
+    expire_in: 30 days
+
+test:
+  stage: test
+  image: ubuntu
+  before_script:
+    - apt update
+    - apt install -y dig
+  script:
+    - dig google.com +short
+  except:
+    - main
+
+dev:
+  stage: dev
+  image: denyo/alpine-kubectl
+  script:
+    - kubectl apply -f dnsutils.yaml --kubeconfig $KUBECONFIG
+  except:
+    - main
+
+release:
+  stage: release
+  image: python:slim-buster
+  script:
+    - python --vesrion
+  only:
+    - main
+  when:
+    - manual

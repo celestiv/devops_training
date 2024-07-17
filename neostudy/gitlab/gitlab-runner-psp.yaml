@@ -1,0 +1,35 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+  name: gitlab-runner
+spec:
+  allowPrivilegeEscalation: true
+  allowedCapabilities:
+    - 'CHOWN'
+    - 'SETUID'
+    - 'SETGID'
+    - 'FOWNER'
+    - 'DAC_OVERRIDE'
+  fsGroup:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  volumes:
+    - 'emptyDir'
+    - 'secret'
+    - 'downwardAPI'
+    - 'configMap'
+    - 'PersistentVolumeClaim'
+    - 'projected'
+  hostPID: false
+  hostPIC: false
+  hostNetwork: false
+  privileged: true

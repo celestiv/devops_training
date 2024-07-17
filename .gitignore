@@ -1,7 +1,14 @@
-__pychache__
+__pycache__
 
 .idea
+.vscode
 
-.kube
 
 .DS_Store
+venv
+.env
+
+*.log
+
+.kube
+.vagrant

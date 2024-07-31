@@ -84,7 +84,47 @@ https://gitlab.com/neo-learn/sample-app2.git
 
 В ответ прислать.
 1. Ссылку на репозиторий, из которого вы запускаете пайплайн.
-2. Текст пайплайна.
+
+https://gitlab.com/celestiv/neoflex-docker
+
+2. Текст пайплайна
+
+```yaml
+stages:
+  - kaniko-build
+  - deploy to kubernetes
+
+Build:
+  stage: kaniko-build 
+  variables:
+    GIT_USERNAME: ${CI_REGISTRY_USER} 
+    GIT_PASSWORD: ${CI_REGISTRY_PASSWORD}
+  image:
+    name: gcr.io/kaniko-project/executor:v1.9.0-debug 
+    entrypoint: [""]
+  tags:
+    - microk8s 
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA"
+
+Deploy-on-Dev:
+  stage: deploy to kubernetes
+  image:
+    name: alpine/helm:3.2.1
+  tags:
+    - microk8s
+  script:
+    - helm upgrade helm-demo-gitlab ./helm --install --namespace helm-demo
+```
+
 3. Скриншот логов успешного пайплайна.
+
+![pipeline success](./img/part4.pipeline_success.png)
+
 4. Скриншот результат выполнения команды kubectl get all в неймспейсе
 gitlab или в том неймспейсе, где развернулось ваше приложение.
+
+![kubectl get all](./img/kubectl_get_all.png)

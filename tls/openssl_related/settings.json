@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.multiRootWorkspaceName": "/",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.port": 4430,
+    "liveServer.settings.https": {
+        "enable": true,
+        "cert": "/home/alex/devops_training/tls/keys/server-cert.crt",
+        "key": "/home/alex/devops_training/tls/keys/server-key.key",
+        "passphrase": "123456"
+    }
+}

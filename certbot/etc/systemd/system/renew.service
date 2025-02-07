@@ -1,0 +1,9 @@
+[Unit]
+Description=Проверка и обновление сертификата при помощи certbot
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/renew
+
+[Install]
+WantedBy=multi-user.target

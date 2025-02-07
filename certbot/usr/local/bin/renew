@@ -1,0 +1,15 @@
+#!/bin/bash
+
+CERT_PATH="/etc/letsencrypt/live/swiperapp.com/fullchain.pem"
+CERTBOT_COMMAND="certbot renew --quiet --deploy-hook 'systemctl reload nginx'"
+
+EXPIRY_DATE=$(openssl x509 -enddate -noout -in $CERT_PATH | cut -d= -f2)
+CURRENT_DATE=$(date -d "$EXPIRY_DATE" +%s)
+REMAINING_DAYS=$(( (CURRENT_DATE - $(date +%s)) / 86400 ))
+
+if [ "$REMAINING_DAYS" -lt 30 ]; then
+    echo "Certificate is about to expire. Renewing..."
+    "$CERTBOT_COMMAND"
+else
+    echo "Certificate is valid for another "$REMAINING_DAYS" days."
+fi

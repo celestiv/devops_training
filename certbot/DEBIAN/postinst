@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+systemctl daemon-reload
+
+systemctl enable renew.service
+systemctl start renew.service
+
+systemctl enable renew.timer
+systemctl start renew.timer

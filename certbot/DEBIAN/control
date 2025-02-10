@@ -1,0 +1,8 @@
+Package: cert-renewal
+Version: 1.0
+Section: utils
+Priority: optioinal
+Architecture: all
+Depends: openssl, certbot
+Maintainer: <>
+Description: Script to check validity period and renew certificate
